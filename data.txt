@@ -1,1 +1,2 @@
-This is my data file.
+This is my data file
+This is my second line.
