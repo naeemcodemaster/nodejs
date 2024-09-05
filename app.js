@@ -145,8 +145,6 @@ function listFilesAndDirs(){
 
 // current project me file hoti hai.
 // console.log(process.argv[1])
-
-
 // console.log(process.argv[2])
 
 const action = process.argv[2];
