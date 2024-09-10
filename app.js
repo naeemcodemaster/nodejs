@@ -147,27 +147,146 @@ function listFilesAndDirs(){
 // console.log(process.argv[1])
 // console.log(process.argv[2])
 
-const action = process.argv[2];
-const arg1 = process.argv[3];
-const arg2 = process.argv[4];
+// const action = process.argv[2];
+// const arg1 = process.argv[3];
+// const arg2 = process.argv[4];
 
-switch(action){
-    case 'create':
-        createFile(arg1,arg2);
-        break;
-    case 'read':
-        readFile(arg1);
-        break;
-    case 'append':
-        appendToFile(arg1,arg2);
-        break;
-    case 'delete':
-        deleteFile(arg1);
-        break;
-    default:
-        console.log("Unknown Action") 
-}
+// switch(action){
+//     case 'create':
+//         createFile(arg1,arg2);
+//         break;
+//     case 'read':
+//         readFile(arg1);
+//         break;
+//     case 'append':
+//         appendToFile(arg1,arg2);
+//         break;
+//     case 'delete':
+//         deleteFile(arg1);
+//         break;
+//     default:
+//         console.log("Unknown Action") 
+// }
 
 
 // How to write in terminal plz check this one
 // node app.js create data.txt "this is first line";
+
+
+// http (Hyper Text transfer protocol)
+
+// first topic
+// const http = require('http');
+// const server = http.createServer((req,res)=>{
+//     res.end("This is my server");
+// })
+
+// const PORT = 5000;
+// server.listen(PORT,()=>{
+//     console.log(`Server is running on port ${PORT}`)
+// })
+
+
+
+
+// // second topic
+// const http = require('http');
+// const server = http.createServer((req,res)=>{
+
+//     req parameter => header,body,params,url
+//     res.statusCode = 200;
+//     res.setHeader('Content-Type','text/plain')
+//     res.end("<h2>This is my server</h2>");
+// })
+
+// const PORT = 5000;
+// server.listen(PORT,()=>{
+//     console.log(`Server is running on port ${PORT}`)
+// })
+
+
+// Third topic
+// const http = require('http');
+// const server = http.createServer((req,res)=>{
+//     res.statusCode = 200;
+//     res.setHeader('Content-Type','text/html')
+//     res.end("<h2>This is my server</h2>");
+// })
+
+// const PORT = 5000;
+// server.listen(PORT,()=>{
+//     console.log(`Server is running on port ${PORT}`)
+// })
+
+
+
+// second topic
+// const http = require('http');
+// const server = http.createServer((req,res)=>{
+//     if(req.url === '/'){
+//         res.end('Home Page');
+//     }else if(req.url === '/about'){
+//         res.end('About Page');
+//     }else if(req.url === '/contact'){
+//         res.end('Contact Page');
+//     }else{
+//         res.end('404 page not found');
+//     }
+// })
+
+
+
+// Serving HTML Files
+const http = require('http');
+// const server = http.createServer((req,res)=>{
+//     if(req.url === '/'){
+//         fs.readFile('index.html',(err,data)=>{
+//             if(err){
+//                 res.writeHead(500);
+//                 res.end('Error loading file');
+//             }else{
+//                 res.writeHead(200,{'Content-Type':'text/html'});
+//                 res.end(data);
+                
+//             }
+//         })
+//     }else if(req.url === '/about'){
+//         fs.readFile('about.html',(err,data)=>{
+//             if(err){
+//                 res.writeHead(500);
+//                 res.end('Error loading file');
+
+//             }else{
+//                 res.writeHead(200,{'Content-Type':'text/html'});
+//                 res.end(data);
+//             }
+//         })
+//     }else{
+//         res.writeHead(404,{'Content-Type':'text/html'});
+//         res.end('<h2>404 Page Not Found</h2>');
+//     }
+// })
+
+
+// Serving JSON data
+// const server = http.createServer((req,res)=>{
+
+//     if(req.url === '/api/users'){
+//         res.writeHead(200,{'Content-Type':'application/json'});
+//         res.end(JSON.stringify([{name:'khan'},{name:'ali'}]));
+//     }else{
+//         res.writeHead(404,{'Content-Type':'application/json'});
+//         res.end(JSON.stringify({message:'Not found'}));
+//     }
+
+// });
+
+
+
+
+// OS (Operating System)
+const PORT = 5000;
+server.listen(PORT,()=>{
+    console.log(`Server is running on port ${PORT}`)
+})
+
