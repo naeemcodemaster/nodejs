@@ -55,74 +55,74 @@
 const fs = require('fs');
 const path = require('path');
 
-const fullPath = path.join(__dirname,'files');
+const fullPath = path.join(__dirname, 'files');
 // console.log(fullPath);
 
 // Create File
-function createFile(fileName,content){
-    const filePath = path.join(fullPath,fileName);
-    fs.writeFile(filePath,content,(err)=>{
-        if(err) throw err;
+function createFile(fileName, content) {
+    const filePath = path.join(fullPath, fileName);
+    fs.writeFile(filePath, content, (err) => {
+        if (err) throw err;
         console.log(`${fileName} has been created`);
     })
 }
 
 // read from file
-function readFile(fileName){
-    const filePath = path.join(fullPath,fileName);
-    fs.readFile(filePath,(err,data)=>{
-        if(err) throw err;
+function readFile(fileName) {
+    const filePath = path.join(fullPath, fileName);
+    fs.readFile(filePath, (err, data) => {
+        if (err) throw err;
         console.log(`Content of ${fileName}: \n ${data}`)
     })
 }
 
 
 // Append to a file
-function appendToFile(fileName,content){
-    const filePath = path.join(fullPath,fileName);
-    fs.appendFile(filePath,content,(err)=>{
-        if(err) throw err;
+function appendToFile(fileName, content) {
+    const filePath = path.join(fullPath, fileName);
+    fs.appendFile(filePath, content, (err) => {
+        if (err) throw err;
         console.log(`${fileName} has been updated`);
     })
 }
 
 // Delete File
-function deleteFile(fileName){
-    const filePath = path.join(fullPath,fileName);
-    fs.unlink(filePath,(err)=>{
-        if(err) throw err;
+function deleteFile(fileName) {
+    const filePath = path.join(fullPath, fileName);
+    fs.unlink(filePath, (err) => {
+        if (err) throw err;
         console.log(`${fileName} has been deleted`);
     })
 }
 
 
 // Create directory
-function createDirectory(dirName){
-    const newDirPath = path.join(fullPath,dirName);
-    fs.mkdir(newDirPath,(err)=>{
-        if(err) throw err;
+function createDirectory(dirName) {
+    const newDirPath = path.join(fullPath, dirName);
+    fs.mkdir(newDirPath, (err) => {
+        if (err) throw err;
         console.log(`Directory ${dirName} has been created`);
     })
 
 }
 
 // Remove Directory
-function removeDirectory(dirName){
-    const dirToRemove = path.join(fullPath,dirName);
-    fs.rmdir(dirToRemove,(err)=>{
-        if(err) throw err;
+function removeDirectory(dirName) {
+    const dirToRemove = path.join(fullPath, dirName);
+    fs.rmdir(dirToRemove, (err) => {
+        if (err) throw err;
         console.log(`Directory ${dirName} has been removed`);
     });
 }
 
 
 // List All files and directories
-function listFilesAndDirs(){
+function listFilesAndDirs() {
     const filesPath = path.join(fullPath);
-    fs.readdir(filesPath,(err,files)=>{
-        if(err) throw err;
+    fs.readdir(filesPath, (err, files) => {
+        if (err) throw err;
         console.log(`Content of ${filesPath}`);
-        files.forEach(file=>console.log(file));
+        files.forEach(file => console.log(file));
     });
 }
 
@@ -247,7 +247,7 @@ const http = require('http');
 //             }else{
 //                 res.writeHead(200,{'Content-Type':'text/html'});
 //                 res.end(data);
-                
+
 //             }
 //         })
 //     }else if(req.url === '/about'){
@@ -282,11 +282,63 @@ const http = require('http');
 // });
 
 
+// Difference between Sync and Async and Stream handling files
+
+// Sync
+// fs.readFileSync('data.txt','utf-8',(err,data)=>{
+//     if(!err){
+//         console.error(err);
+//         return;
+//     }
+
+//     console.log(data);
+// })
+// console.log("hi");
+//Reads the entire file content into memory at once.
+//Suitable for small files, but can be inefficient or impractical for large files due to high memory usage.
+
+
+// Async
+//const fs = require('fs');
+// fs.readFile('data.txt', 'utf8', (err, data) => {
+//    if (err) {
+//        console.error(err);
+//        return;
+//    }
+//    console.log(data);
+// });
+// console.log("hi");
+//Reads the entire file content into memory once the operation completes.
+//Non-blocking and allows other operations to proceed, but still loads the entire file into memory.
+
+
+
+// readable stream
+// const readableStream = fs.createReadStream('example.txt', 'utf-8');
+// readableStream.on('data', (chunk) => {
+//     console.log(chunk);
+// })
+// readableStream.on('end', () => {
+//     console.log("Stream ended")
+// })
+// //Processes data in chunks as it is read from the file.
+// //    More memory-efficient for large files since it doesn’t load the entire file into memory.
+// //    Allows for continuous processing of data (e.g., transforming or processing data as it is read).
+
+
+// const writableStream = fs.createWriteStream('output.txt');
+// writableStream.write('Hello, World!\n');
+// writableStream.write('Another line of text.\n');
+// writableStream.end(() => {
+//    console.log('Stream ended');
+// });
+
+
 
 
 // OS (Operating System)
-const PORT = 5000;
-server.listen(PORT,()=>{
-    console.log(`Server is running on port ${PORT}`)
-})
+// const PORT = 5000;
+// server.listen(PORT,()=>{
+//     console.log(`Server is running on port ${PORT}`)
+// })
 
