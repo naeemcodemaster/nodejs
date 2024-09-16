@@ -337,8 +337,65 @@ const http = require('http');
 
 
 // OS (Operating System)
+
+
+
+// const server = http.createServer((req,res)=>{
+//     res.end('Server running')
+// })
 // const PORT = 5000;
 // server.listen(PORT,()=>{
 //     console.log(`Server is running on port ${PORT}`)
 // })
+
+
+
+
+// Express js 
+// What Is Express JS? Express is a node js web application framework that provides broad features for building web and mobile applications. It is used to build a single page, multipage, and hybrid web application. It's a layer built on the top of the Node js that helps manage servers and routes.
+
+// Express.js makes it easy to define routes and handle HTTP requests.
+
+
+const express = require('express');
+const app = express();
+
+// Middleware (express js json ko accept kry)
+app.use(express.json());
+
+// CRUD Operations (Create, read, update and delete)
+
+app.get('/',(req,res)=>{
+    res.send('Hello from Express JS');
+})
+
+app.get('/about',(req,res)=>{
+    res.send('About Page');
+})
+
+app.get('/contact',(req,res)=>{
+    res.send('Contact page')
+})
+
+
+
+app.post('/',(req,res)=>{
+    console.log(req.body);
+    const data = req.body;
+
+    // res.send('Form submitted');
+    // res.json({success:"Form submitted successfully"});
+    // res.json({status:200,msg:"form submitted"});
+    res.json({status:200,msg:data});
+    
+})
+
+const PORT = 5000;
+app.listen(PORT,()=>{
+    console.log(`Server is running on ${PORT}`);
+})
+
+
+
+
 
