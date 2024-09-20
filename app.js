@@ -361,34 +361,54 @@ const express = require('express');
 const app = express();
 
 // Middleware (express js json ko accept kry)
-app.use(express.json());
+// app.use(express.json());
 
-// CRUD Operations (Create, read, update and delete)
+// // CRUD Operations (Create, read, update and delete)
 
-app.get('/',(req,res)=>{
-    res.send('Hello from Express JS');
-})
+// app.get('/',(req,res)=>{
+//     res.send('Hello from Express JS');
+// })
 
-app.get('/about',(req,res)=>{
-    res.send('About Page');
-})
+// app.get('/about',(req,res)=>{
+//     res.send('About Page');
+// })
 
-app.get('/contact',(req,res)=>{
-    res.send('Contact page')
-})
+// app.get('/contact',(req,res)=>{
+//     res.send('Contact page')
+// })
 
-
-
-app.post('/',(req,res)=>{
-    console.log(req.body);
-    const data = req.body;
-
-    // res.send('Form submitted');
-    // res.json({success:"Form submitted successfully"});
-    // res.json({status:200,msg:"form submitted"});
-    res.json({status:200,msg:data});
+// app.post('/',(req,res)=>{
+//     console.log(req.body);
+//     const data = req.body;
+//     // res.send('Form submitted');
+//     // res.json({success:"Form submitted successfully"});
+//     // res.json({status:200,msg:"form submitted"});
+//     res.json({status:200,msg:data});
     
-})
+// })
+
+
+// const os = require('os');
+// const threads = os.cpus().length;
+// console.log(threads);
+// const fs = require('fs');
+
+console.log("1");
+console.log("2");
+
+// fs.readFile("data.txt",(err,output)=>{
+//     if(!err){
+//     console.log(output.toString()); 
+//     // console.log(output); 
+//     }
+// })
+
+
+const output = fs.readFileSync("data.txt", "utf-8"); 
+console.log(output); 
+console.log("3");
+console.log("4");
+
 
 const PORT = 5000;
 app.listen(PORT,()=>{
