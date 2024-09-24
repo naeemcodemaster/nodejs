@@ -393,8 +393,8 @@ const app = express();
 // console.log(threads);
 // const fs = require('fs');
 
-console.log("1");
-console.log("2");
+// console.log("1");
+// console.log("2");
 
 // fs.readFile("data.txt",(err,output)=>{
 //     if(!err){
@@ -404,11 +404,42 @@ console.log("2");
 // })
 
 
-const output = fs.readFileSync("data.txt", "utf-8"); 
-console.log(output); 
-console.log("3");
-console.log("4");
+// const output = fs.readFileSync("data.txt", "utf-8"); 
+// console.log(output); 
+// console.log("3");
+// console.log("4");
 
+
+
+// =========== Package.json and package.lock.json
+// // Note: package.json and package.lock.json both will be used to add packages,
+// package.json will consist package name, and package.lock.json will contain package name with other details as well, so descriptions of any packages like version etc  will be shown over there in package.lock.json file.
+
+
+
+// Package version 4.2.3
+// 4  Major release   (4 say 5 hogya hai major update or breaking update)
+// 2  minor release   (ak chota sa feature add krna,security issue fix)  recommended
+// 3  small type error fix or any bug fix  (e.g , usman, Usman,  type change, number,float,string etc...)
+
+
+// ^ caret mean ^3.16.2   yaha py jb ap likhain gy npm update tu let say 3.17.0 krdega q k 16 say 17 version ayah hai but 3 agr 4 ata hai tu nhi kry ga, hum ne ^caret ki help say block kya hai.
+// 3 ko lock kro
+
+// "express": "4.21.0" → Installs only version 4.21.0, no updates unless manually done.
+// "express": "^4.21.0" → Allows updates to minor and patch versions (e.g., 4.22.0, 4.21.1) but won't install breaking major versions (e.g., 5.0.0).
+
+
+// When to Use Specific Status Codes:
+// 200 OK: Use for successful responses with a payload.
+// 201 Created: Use when a resource is successfully created.
+// 204 No Content: Use when a successful request has no content to return (e.g., after a DELETE request).
+// 400 Bad Request: Use for client errors in the request syntax or parameters.
+// 401 Unauthorized: Use for authentication errors.
+// 403 Forbidden: Use when the user is authenticated but not authorized to access the resource.
+// 404 Not Found: Use when the requested resource does not exist.
+// 422 Unprocessable Entity: Use for validation errors where the request format is correct but the content is invalid.
+// 500 Internal Server Error: Use for unexpected server errors.
 
 const PORT = 5000;
 app.listen(PORT,()=>{
