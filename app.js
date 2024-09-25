@@ -76,7 +76,6 @@ function readFile(fileName) {
     })
 }
 
-
 // Append to a file
 function appendToFile(fileName, content) {
     const filePath = path.join(fullPath, fileName);
@@ -237,7 +236,7 @@ function listFilesAndDirs() {
 
 
 // Serving HTML Files
-const http = require('http');
+// const http = require('http');
 // const server = http.createServer((req,res)=>{
 //     if(req.url === '/'){
 //         fs.readFile('index.html',(err,data)=>{
@@ -357,8 +356,8 @@ const http = require('http');
 // Express.js makes it easy to define routes and handle HTTP requests.
 
 
-const express = require('express');
-const app = express();
+// const express = require('express');
+// const app = express();
 
 // Middleware (express js json ko accept kry)
 // app.use(express.json());
@@ -440,6 +439,115 @@ const app = express();
 // 404 Not Found: Use when the requested resource does not exist.
 // 422 Unprocessable Entity: Use for validation errors where the request format is correct but the content is invalid.
 // 500 Internal Server Error: Use for unexpected server errors.
+
+// const express = require('express');
+// const app = express();
+
+// app.get('/', (req, res) => {
+//   // Get the IP address of the request
+//   const ip = req.ip || req.connection.remoteAddress;
+  
+//   res.send(`Your IP address is: ${ip}`);
+// });
+
+// app.listen(3000, () => {
+//   console.log('Server is running on port 3000');
+// });
+
+
+// =============== Middleware ===============
+const express = require('express');
+const app = express();
+const router = express.Router();
+
+const routerProduct = express.Router();
+
+// nodejs routing handling complex
+// express easy way to handle routing, provide middlewares, some extra facilities
+
+
+// Middleware
+// In Node.js, **middleware** is a function that sits between the request and the response in the application’s request-response cycle. Middleware functions are commonly used to perform tasks such as:
+
+// - Logging
+// - Authentication
+// - Error handling
+// - Request parsing
+// - Response modification
+
+
+
+// Middleware (express js json ko accept kry)
+
+// Built in Middleware
+app.use(express.json());
+
+// static files
+// app.use(express.static());
+
+// jo form k data ata hai os ko json me parse krta
+// app.use(bodyParser.urlencoded({ extended: false }));
+
+
+
+
+// Custom Middleware 
+// application level middleware
+// app.use((req,res,next)=>{
+//     console.log("Middleware called");
+//     next();
+// })
+
+
+
+
+// app.get('/',(req,res)=>{
+//     res.end('home page');
+// })
+
+// app.post('/register',(req,res)=>{
+//     console.log(req.body);
+    // const user = req.body;
+    // if(user.email == ''){
+    //     return res.json({error:'Email is required'})
+    // }
+    // by using destructuring
+    // const {email,password} = req.body;
+    // if(email == ''){
+    //     return res.json({error:'Email is required'})
+
+    // }
+
+    
+
+//     res.json({output:'fetched'})
+// })
+
+
+// Router base middleware
+router.get('/profile',(req,res)=>{
+    res.send('user page');
+})
+
+router.get('/changepassword',(req,res)=>{
+    res.send('change password page');
+})
+
+// products
+routerProduct.get('/productdetails',(req,res)=>{
+    res.send('Product details page');
+})
+routerProduct.get('/productdetails',(req,res)=>{
+    res.send('Product details page');
+})
+
+
+
+app.use('/api/user',router);
+app.use('/api/product',routerProduct);
+
+
+
 
 const PORT = 5000;
 app.listen(PORT,()=>{
